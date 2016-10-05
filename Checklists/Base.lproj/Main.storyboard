@@ -95,7 +95,7 @@
                                 <action selector="cancel" destination="usR-z0-TXP" id="KGy-iX-Fbi"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="d8j-nj-bfs">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="d8j-nj-bfs">
                             <connections>
                                 <action selector="done" destination="usR-z0-TXP" id="cGT-aD-VLa"/>
                             </connections>
