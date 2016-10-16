@@ -1,1 +1,1 @@
-Checklists app for Ray Wanderlich tutorials
+Checklists app for Ray Wenderlich tutorials
