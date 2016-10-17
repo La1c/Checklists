@@ -9,16 +9,8 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
-    var items: [ChecklistItem]
+    
     var checklist: Checklist!
-    
-    required init? (coder aDecoder: NSCoder)
-    {
-        items = [ChecklistItem]()
-        super.init(coder: aDecoder)
-        loadChecklistItems()
-    }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +24,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return items.count
+        return checklist.items.count
     }
     
     override func tableView(_ tableView: UITableView,
@@ -40,9 +32,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
         
-        configureTextForTheCell(cell, withChecklistItem: items[(indexPath as NSIndexPath).row])
+        configureTextForTheCell(cell, withChecklistItem: checklist.items[(indexPath as NSIndexPath).row])
  
-        configureCheckmarkForCell(cell, withChecklistItem: items[(indexPath as NSIndexPath).row])
+        configureCheckmarkForCell(cell, withChecklistItem: checklist.items[(indexPath as NSIndexPath).row])
         return cell
     }
     
@@ -68,25 +60,25 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         
         if let cell = tableView.cellForRow(at: indexPath){
            
-            let item = items[(indexPath as NSIndexPath).row]
+            let item = checklist.items[(indexPath as NSIndexPath).row]
             item.toggleChecked()
             
-            configureCheckmarkForCell(cell, withChecklistItem: items[(indexPath as NSIndexPath).row])
+            configureCheckmarkForCell(cell, withChecklistItem: checklist.items[(indexPath as NSIndexPath).row])
             }
         
         tableView.deselectRow(at: indexPath, animated: true)
-        saveChecklistItems()
+        //saveChecklistItems()
     }
     
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                                                forRowAt indexPath: IndexPath) {
-        items.remove(at: (indexPath as NSIndexPath).row)
+        checklist.items.remove(at: (indexPath as NSIndexPath).row)
         
         let indexPaths = [indexPath]
         
         tableView.deleteRows(at: indexPaths, with: .automatic)
-        saveChecklistItems()
+        //saveChecklistItems()
     }
     
     func itemDetailViewControllerDidClancel(controller: ItemDetailViewController) {
@@ -94,26 +86,26 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     func itemDetailViewController(controller: ItemDetailViewController, didFinishAddingItem item: ChecklistItem) {
-        let newRowIndex = items.count
-        items.append(item)
+        let newRowIndex = checklist.items.count
+        checklist.items.append(item)
         
         let indexPath = IndexPath(row: newRowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows( at: indexPaths, with: .automatic)
         
-        saveChecklistItems()
+        //saveChecklistItems()
         dismiss(animated: true, completion: nil)
        
     }
     
     func itemDetailViewController(controller: ItemDetailViewController, didFinishEditingItem item: ChecklistItem) {
-        if let ind = items.index(of: item){
+        if let ind = checklist.items.index(of: item){
             let indexPath = IndexPath(row: ind, section: 0)
             if let cell = tableView.cellForRow(at: indexPath){
                 configureTextForTheCell(cell, withChecklistItem: item)
             }
         }
-        saveChecklistItems()
+        //saveChecklistItems()
         dismiss(animated: true, completion: nil)
         
     }
@@ -131,40 +123,19 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
             controller.delegate = self
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell){
-                controller.itemToEdit = items[indexPath.row]
+                controller.itemToEdit = checklist.items[indexPath.row]
             }
         }
         
     }
     
-    func documentsDirectory() -> String{
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        return paths[0]
-    }
+
+//    
+
     
-    func dataFilePath() -> String{
-        return (documentsDirectory() as NSString).appendingPathComponent("Checklists.plist")
-    }
-    
-    func saveChecklistItems(){
-        let data = NSMutableData()
-        let archiver = NSKeyedArchiver(forWritingWith: data)
-        archiver.encode(items, forKey: "ChecklistItems")
-        archiver.finishEncoding()
-        data.write(toFile: dataFilePath(), atomically: true)
-        
-    }
-    
-    func loadChecklistItems(){
-        let path = dataFilePath()
-        if FileManager.default.fileExists(atPath: path){
-            if let data = NSData(contentsOfFile: path){
-                let archiver = NSKeyedUnarchiver(forReadingWith: data as Data)
-                items = archiver.decodeObject(forKey: "ChecklistItems") as! [ChecklistItem]
-                archiver.finishDecoding()
-            }
-        }
-    }
+
+//    
+
 
 
 }
