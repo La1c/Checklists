@@ -41,4 +41,10 @@ class ChecklistItem: NSObject, NSCoding{
         super.init()
     }
     
+    func scheduleNotification(){
+        if shouldRemind && dueDate > Date(){
+            
+        }
+    }
+    
 }
