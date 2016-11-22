@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 protocol ItemDetailViewControllerDelegate: class {
     func itemDetailViewControllerDidClancel(controller: ItemDetailViewController)
@@ -28,6 +29,14 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     var dueDate = Date()
     var datePickerVisible = false
 
+    @IBAction func shouldRemindToggled(_ switchControl: UISwitch) {
+        textField.resignFirstResponder()
+        
+        if switchControl.isOn{
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound], completionHandler: {_,_ in })
+        }
+    }
     @IBAction func dateChanged(_ sender: UIDatePicker) {
         dueDate = datePicker.date
         updateDueDateLabel()
