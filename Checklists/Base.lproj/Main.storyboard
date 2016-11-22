@@ -32,9 +32,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UM-Oe-0Vo">
-                                            <rect key="frame" x="31" y="12" width="503" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UM-Oe-0Vo">
+                                            <rect key="frame" x="38" y="12" width="270" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -43,6 +42,9 @@
                                     <constraints>
                                         <constraint firstItem="n31-f3-hH7" firstAttribute="centerY" secondItem="Cw6-Ta-SNl" secondAttribute="centerY" id="4sU-PW-3sa"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="n31-f3-hH7" secondAttribute="leading" id="UeX-wf-WA4"/>
+                                        <constraint firstAttribute="trailing" secondItem="8UM-Oe-0Vo" secondAttribute="trailing" id="fUt-02-Yx0"/>
+                                        <constraint firstItem="8UM-Oe-0Vo" firstAttribute="centerY" secondItem="Cw6-Ta-SNl" secondAttribute="centerY" id="gzE-1G-CK1"/>
+                                        <constraint firstItem="8UM-Oe-0Vo" firstAttribute="leading" secondItem="Cw6-Ta-SNl" secondAttribute="leadingMargin" constant="30" id="tM2-5m-REd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -355,4 +357,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="Pph-ws-cjq"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.015686274509803921" green="0.66274509803921566" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -47,6 +47,8 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         } else {
             label.text = ""
         }
+        
+        label.textColor = view.tintColor
     }
     
     func configureTextForTheCell(_ cell: UITableViewCell,

@@ -37,7 +37,9 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
             checklist.iconName = iconName
         }
         
-        iconImageView.image = UIImage(named: iconName)
+         iconImageView.image = UIImage(named: iconName)
+        
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
