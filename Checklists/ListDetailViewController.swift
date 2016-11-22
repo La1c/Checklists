@@ -17,6 +17,10 @@ protocol ListDetailViewControllerDelegate: class{
 
 class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
+    var iconName = "Folder"
+    
+    
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
@@ -30,7 +34,10 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
             title = "Edit Checklist"
             textField.text = checklist.name
             doneBarButton.isEnabled = true
+            checklist.iconName = iconName
         }
+        
+        iconImageView.image = UIImage(named: iconName)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,10 +49,12 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func done() {
         if let checklist = checkListToEdit{
             checklist.name = textField.text!
+            checklist.iconName = iconName
             delegate?.listDetailViewController(controller: self, didFinishEditing: checklist)
         }else{
-            let checklist = Checklist(name: textField.text!)
+            let checklist = Checklist(name: textField.text!, iconName: iconName)
             delegate?.listDetailViewController(controller: self, didFinishAdding: checklist)
+            
         }
     }
     
@@ -54,7 +63,11 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
+        if indexPath.section == 1{
+            return indexPath
+        } else{
+            return nil
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -64,5 +77,23 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         doneBarButton.isEnabled = newText.length > 0
         return true
     }
+}
 
+
+//MARK: -prepare for segue
+extension ListDetailViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PickIcon"{
+            let vc = segue.destination as! IconPickerViewController
+            vc.delegate = self
+        }
+    }
+}
+
+extension ListDetailViewController: IconPickerViewControllerDelegate{
+    func iconPicker(picker: IconPickerViewController, didPick iconName: String) {
+        iconImageView.image = UIImage(named: iconName)
+        self.iconName = iconName
+        let _ = navigationController?.popViewController(animated: true)
+    }
 }
