@@ -15,6 +15,7 @@ class ChecklistItem: NSObject, NSCoding{
     var shouldRemind = false
     var dueDate = Date()
     var itemID: Int
+    var priority = Priority.none
     
     func toggleChecked(){
         checked = !checked
@@ -26,6 +27,7 @@ class ChecklistItem: NSObject, NSCoding{
         aCoder.encode(dueDate, forKey: "DueDate")
         aCoder.encode(shouldRemind, forKey: "ShouldRemind")
         aCoder.encode(itemID, forKey: "ItemID")
+        aCoder.encode(priority, forKey: "Priority")
     }
     
     override init(){
@@ -39,6 +41,7 @@ class ChecklistItem: NSObject, NSCoding{
         dueDate = aDecoder.decodeObject(forKey: "DueDate") as! Date
         shouldRemind = aDecoder.decodeBool(forKey: "ShouldRemind")
         itemID = aDecoder.decodeInteger(forKey: "ItemID")
+        priority = aDecoder.decodeObject(forKey: "Priority") as! Priority
         super.init()
     }
     

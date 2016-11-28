@@ -58,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         dataModel.saveChecklists()
     }
 
-
 }
 
 

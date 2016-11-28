@@ -35,6 +35,8 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         configureTextForTheCell(cell, withChecklistItem: checklist.items[(indexPath as NSIndexPath).row])
  
         configureCheckmarkForCell(cell, withChecklistItem: checklist.items[(indexPath as NSIndexPath).row])
+        
+        configureSubtitleForCell(cell, withChecklistItem: checklist.items[(indexPath as NSIndexPath).row])
         return cell
     }
     
@@ -56,6 +58,18 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
+    }
+    
+    func configureSubtitleForCell(_ cell: UITableViewCell,
+                                  withChecklistItem item: ChecklistItem){
+        let label = cell.viewWithTag(1002) as! UILabel
+        switch item.priority {
+        case .none:
+            label.text = "No priority"
+        default:
+            label.text = item.priority.rawValue
+            label.textColor = view.tintColor
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -88,12 +102,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     func itemDetailViewController(controller: ItemDetailViewController, didFinishAddingItem item: ChecklistItem) {
-        let newRowIndex = checklist.items.count
         checklist.items.append(item)
-        
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows( at: indexPaths, with: .automatic)
+        checklist.sortByPriority()
+        tableView.reloadData()
         
         //saveChecklistItems()
         dismiss(animated: true, completion: nil)
@@ -101,12 +112,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     func itemDetailViewController(controller: ItemDetailViewController, didFinishEditingItem item: ChecklistItem) {
-        if let ind = checklist.items.index(of: item){
-            let indexPath = IndexPath(row: ind, section: 0)
-            if let cell = tableView.cellForRow(at: indexPath){
-                configureTextForTheCell(cell, withChecklistItem: item)
-            }
-        }
+        checklist.sortByPriority()
+        tableView.reloadData()
+        
         //saveChecklistItems()
         dismiss(animated: true, completion: nil)
         
@@ -130,15 +138,6 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         }
         
     }
-    
-
-//    
-
-    
-
-//    
-
-
 
 }
 

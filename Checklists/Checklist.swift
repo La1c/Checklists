@@ -40,4 +40,10 @@ class Checklist: NSObject, NSCoding {
         }
         return count
     }
+    
+    func sortByPriority(){
+        items.sort(by: {a, b in
+            a.priority.rawValue.localizedStandardCompare(b.priority.rawValue) == .orderedDescending
+        })
+    }
 }
