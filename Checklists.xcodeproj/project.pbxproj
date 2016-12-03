@@ -97,16 +97,24 @@
 				E752E9F01C5F9F4F00007AE2 /* Main.storyboard */,
 				E752E9F31C5F9F4F00007AE2 /* Assets.xcassets */,
 				E752E9F81C5F9F4F00007AE2 /* Info.plist */,
-				E7FFA9F51C74C03F008303F1 /* ChecklistItem.swift */,
 				E72ECBA31D5CE1C100C3FB07 /* ItemDetailsViewController.swift */,
 				E7A797B71DA7E47A00BA915C /* AllListsViewController.swift */,
-				E7A797B91DA7ED7800BA915C /* Checklist.swift */,
 				E71999DF1DB11A24004CCCB4 /* ListDetailViewController.swift */,
 				E7A52F501DB50E950052AC36 /* DataModel.swift */,
 				E78AB2681DE4778100565CBF /* IconPickerViewController.swift */,
-				E70082121DEC4E5100EE679A /* Priority.swift */,
+				E7A4C83B1DF35DC900980CFD /* Models */,
 			);
 			path = Checklists;
+			sourceTree = "<group>";
+		};
+		E7A4C83B1DF35DC900980CFD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E70082121DEC4E5100EE679A /* Priority.swift */,
+				E7A797B91DA7ED7800BA915C /* Checklist.swift */,
+				E7FFA9F51C74C03F008303F1 /* ChecklistItem.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
