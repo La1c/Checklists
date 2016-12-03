@@ -92,7 +92,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         if let item = itemToEdit{
-            title = "Edit Item"
+            title = NSLocalizedString("Edit Item", comment: "Edit item screen title")
             textField.text = item.text
             doneBarButton.isEnabled = true
             shouldRemindSwitch.isOn = item.shouldRemind

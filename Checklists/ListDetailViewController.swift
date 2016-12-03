@@ -31,7 +31,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         if let checklist = checkListToEdit{
-            title = "Edit Checklist"
+            title = NSLocalizedString("Edit Checklist", comment: "Edit checklist screen title")
             textField.text = checklist.name
             doneBarButton.isEnabled = true
             try! uiRealm.write {

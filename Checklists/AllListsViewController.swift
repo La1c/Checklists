@@ -50,7 +50,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         cell.textLabel!.text = checklist.name
         cell.accessoryType = .detailDisclosureButton
         let remaining = checklist.countUncheckedItems()
-        cell.detailTextLabel?.text = checklist.items.count == 0 ? "(No items)" : remaining > 0 ?  "\(remaining) Remaining" : "All done!"
+        cell.detailTextLabel?.text = checklist.items.count == 0 ? NSLocalizedString("(No items)", comment: "No items in the list") : remaining > 0 ?  "\(remaining) " + NSLocalizedString("Remaining", comment: "Number of remaining items") : NSLocalizedString("All done!", comment: "No unchecked items left")
         cell.imageView!.image = UIImage(named: checklist.iconName)
         return cell
     }

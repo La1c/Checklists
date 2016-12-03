@@ -1,0 +1,69 @@
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "2He-xC-j2a"; */
+"2He-xC-j2a.title" = "Добавить";
+
+/* Class = "UINavigationItem"; title = "(Name of the Checklist)"; ObjectID = "56L-6a-7TL"; */
+"56L-6a-7TL.title" = "(Имя списка)";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "5ul-zL-jdF"; */
+"5ul-zL-jdF.title" = "Отмена";
+
+/* Class = "UILabel"; text = "Icon"; ObjectID = "6lT-qy-nSy"; */
+"6lT-qy-nSy.text" = "Иконка";
+
+/* Class = "UILabel"; text = "Text"; ObjectID = "8UM-Oe-0Vo"; */
+"8UM-Oe-0Vo.text" = "Текст";
+
+/* Class = "UINavigationItem"; title = "Checklists"; ObjectID = "DGY-Uk-QIi"; */
+"DGY-Uk-QIi.title" = "Списки";
+
+/* Class = "UINavigationItem"; title = "Add Checklist"; ObjectID = "Fix-XB-9UM"; */
+"Fix-XB-9UM.title" = "Добавить список";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Gay-jQ-1ww"; */
+"Gay-jQ-1ww.text" = "Заголовок";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "JQS-lu-XI5"; */
+"JQS-lu-XI5.title" = "Готово";
+
+/* Class = "UITextField"; placeholder = "Name of the list"; ObjectID = "MmE-rq-udc"; */
+"MmE-rq-udc.placeholder" = "Имя списка";
+
+/* Class = "UITextField"; placeholder = "Name of the Item"; ObjectID = "RU1-0R-5ff"; */
+"RU1-0R-5ff.placeholder" = "Имя задачи";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "STT-sa-3Os"; */
+"STT-sa-3Os.text" = "Детали";
+
+/* Class = "UILabel"; text = "Priority"; ObjectID = "Te3-l5-1Ah"; */
+"Te3-l5-1Ah.text" = "Приоритет";
+
+/* Class = "UINavigationItem"; title = "Add Item"; ObjectID = "UiI-4c-OdO"; */
+"UiI-4c-OdO.title" = "Добавить задачу";
+
+/* Class = "UILabel"; text = "Remind Me"; ObjectID = "Ytd-mb-yFC"; */
+"Ytd-mb-yFC.text" = "Напомнить";
+
+/* Class = "UINavigationItem"; title = "Choose Icon"; ObjectID = "eGW-n9-BQR"; */
+"eGW-n9-BQR.title" = "Выбрать иконку";
+
+/* Class = "UISegmentedControl"; lNG-Qk-yPf.segmentTitles[0] = "none"; ObjectID = "lNG-Qk-yPf"; */
+"lNG-Qk-yPf.segmentTitles[0]" = "нет";
+
+/* Class = "UISegmentedControl"; lNG-Qk-yPf.segmentTitles[1] = "!"; ObjectID = "lNG-Qk-yPf"; */
+"lNG-Qk-yPf.segmentTitles[1]" = "!";
+
+/* Class = "UISegmentedControl"; lNG-Qk-yPf.segmentTitles[2] = "!!"; ObjectID = "lNG-Qk-yPf"; */
+"lNG-Qk-yPf.segmentTitles[2]" = "!!";
+
+/* Class = "UISegmentedControl"; lNG-Qk-yPf.segmentTitles[3] = "!!!"; ObjectID = "lNG-Qk-yPf"; */
+"lNG-Qk-yPf.segmentTitles[3]" = "!!!";
+
+/* Class = "UILabel"; text = "Due Date"; ObjectID = "m3R-vi-Tug"; */
+"m3R-vi-Tug.text" = "Когда";
+
+/* Class = "UILabel"; text = "√"; ObjectID = "n31-f3-hH7"; */
+"n31-f3-hH7.text" = "√";
+
+/* Class = "UILabel"; text = "Priority"; ObjectID = "qkV-6X-IQS"; */
+"qkV-6X-IQS.text" = "Приоритет";

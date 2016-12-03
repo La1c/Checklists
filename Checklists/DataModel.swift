@@ -70,7 +70,7 @@ class DataModel{
         
         if firstTime{
             let checklist = Checklist()
-            checklist.name = "List"
+            checklist.name = NSLocalizedString("List", comment: "Default list name for the first app lauch")
             checklist.iconName = "Folder"
             try! uiRealm.write {
                 uiRealm.add(checklist)

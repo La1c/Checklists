@@ -68,7 +68,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         let label = cell.viewWithTag(1002) as! UILabel
         switch item.priority {
         case "":
-            label.text = "No priority"
+            label.text = NSLocalizedString("No priority", comment: "No priority set for an item")
         default:
             label.text = item.priority
             label.textColor = view.tintColor
