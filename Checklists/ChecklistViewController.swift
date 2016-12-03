@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
     
-    var checklist: Checklist!
-
+    var selectedChecklist: Checklist!
+    var tasks: Results<ChecklistItem>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = checklist.name
+        title = selectedChecklist.name
+        reloadTasks()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -24,7 +27,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return checklist.items.count
+        return tasks.count
     }
     
     override func tableView(_ tableView: UITableView,
@@ -32,11 +35,11 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
         
-        configureTextForTheCell(cell, withChecklistItem: checklist.items[(indexPath as NSIndexPath).row])
+        configureTextForTheCell(cell, withChecklistItem: tasks[indexPath.row])
  
-        configureCheckmarkForCell(cell, withChecklistItem: checklist.items[(indexPath as NSIndexPath).row])
+        configureCheckmarkForCell(cell, withChecklistItem: tasks[indexPath.row])
         
-        configureSubtitleForCell(cell, withChecklistItem: checklist.items[(indexPath as NSIndexPath).row])
+        configureSubtitleForCell(cell, withChecklistItem: tasks[indexPath.row])
         return cell
     }
     
@@ -64,10 +67,10 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
                                   withChecklistItem item: ChecklistItem){
         let label = cell.viewWithTag(1002) as! UILabel
         switch item.priority {
-        case .none:
+        case "":
             label.text = "No priority"
         default:
-            label.text = item.priority.rawValue
+            label.text = item.priority
             label.textColor = view.tintColor
         }
     }
@@ -76,10 +79,10 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         
         if let cell = tableView.cellForRow(at: indexPath){
            
-            let item = checklist.items[(indexPath as NSIndexPath).row]
+            let item = tasks[(indexPath as NSIndexPath).row]
             item.toggleChecked()
             
-            configureCheckmarkForCell(cell, withChecklistItem: checklist.items[(indexPath as NSIndexPath).row])
+            configureCheckmarkForCell(cell, withChecklistItem: tasks[(indexPath as NSIndexPath).row])
             }
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -89,7 +92,14 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                                                forRowAt indexPath: IndexPath) {
-        checklist.items.remove(at: (indexPath as NSIndexPath).row)
+        
+       let ind = selectedChecklist.items.index(of: tasks[indexPath.row])
+        try! uiRealm.write{
+            if let ind = ind{
+                selectedChecklist.items.remove(objectAtIndex: ind)
+            }
+        }
+      //  tasks.remove(objectAtIndex: (indexPath as NSIndexPath).row)
         
         let indexPaths = [indexPath]
         
@@ -102,9 +112,15 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     func itemDetailViewController(controller: ItemDetailViewController, didFinishAddingItem item: ChecklistItem) {
-        checklist.items.append(item)
-        checklist.sortByPriority()
-        tableView.reloadData()
+        try! uiRealm.write{
+            selectedChecklist.items.append(item)
+        }
+            reloadTasks()
+            tableView.reloadData()
+        
+        
+//        checklist.sortByPriority()
+        
         
         //saveChecklistItems()
         dismiss(animated: true, completion: nil)
@@ -112,7 +128,8 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     func itemDetailViewController(controller: ItemDetailViewController, didFinishEditingItem item: ChecklistItem) {
-        checklist.sortByPriority()
+ //       checklist.sortByPriority()
+        reloadTasks()
         tableView.reloadData()
         
         //saveChecklistItems()
@@ -133,11 +150,17 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
             controller.delegate = self
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell){
-                controller.itemToEdit = checklist.items[indexPath.row]
+                controller.itemToEdit = selectedChecklist.items[indexPath.row]
             }
         }
         
     }
 
+}
+
+extension ChecklistViewController{
+    func reloadTasks(){
+        tasks = selectedChecklist.items.sorted(byProperty: "priority", ascending: false)
+    }
 }
 

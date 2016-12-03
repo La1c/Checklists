@@ -7,31 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
-//NSObject is allowed to use NSCoder
-class Checklist: NSObject, NSCoding {
-    var iconName:String
-    var name = ""
-    var items = [ChecklistItem]()
+class Checklist: Object {
+    dynamic var iconName = "Folder"
+    dynamic var name = ""
+    var items = List<ChecklistItem>()
     
-    required init?(coder aDecoder: NSCoder) {
-        name = aDecoder.decodeObject(forKey: "Name") as! String
-        items = aDecoder.decodeObject(forKey: "Items") as! [ChecklistItem]
-        iconName = aDecoder.decodeObject(forKey: "IconName") as! String
-        super.init()
-    }
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(name, forKey: "Name")
-        aCoder.encode(items, forKey: "Items")
-        aCoder.encode(iconName, forKey: "IconName")
-    }
-    
-    init(name: String, iconName: String? = nil) {
-        self.name = name
-        self.iconName = iconName ?? "No Icon"
-        super.init()
-    }
     
     func countUncheckedItems() -> Int{
         var count = 0
@@ -39,11 +22,5 @@ class Checklist: NSObject, NSCoding {
                 count += 1
         }
         return count
-    }
-    
-    func sortByPriority(){
-        items.sort(by: {a, b in
-            a.priority.rawValue.localizedStandardCompare(b.priority.rawValue) == .orderedDescending
-        })
     }
 }

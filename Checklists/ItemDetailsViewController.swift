@@ -29,11 +29,11 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     var itemToEdit: ChecklistItem?
     var dueDate = Date()
     var datePickerVisible = false
-    var priority = Priority.none
+    var priority = Priority.none.rawValue
 
 
     @IBAction func priorityValueChanged(_ sender: UISegmentedControl) {
-        priority = Priority(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex)!) ?? Priority.none
+        priority = Priority(rawValue: sender.titleForSegment(at: sender.selectedSegmentIndex)!)?.rawValue ?? Priority.none.rawValue
     }
     @IBAction func shouldRemindToggled(_ switchControl: UISwitch) {
         textField.resignFirstResponder()
@@ -48,24 +48,31 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         updateDueDateLabel()
     }
     @IBAction func done() {
+        
         if let item = itemToEdit{
+           try! uiRealm.write {
             item.text = textField.text!
             item.shouldRemind = shouldRemindSwitch.isOn
             item.dueDate = dueDate
             item.priority = priority
             item.scheduleNotification()
+           }
             delegate?.itemDetailViewController(controller: self, didFinishEditingItem: item)
             
-        }else{
-            let item = ChecklistItem()
-            item.text = textField.text!
-            item.checked = false
-            item.shouldRemind = shouldRemindSwitch.isOn
-            item.dueDate = dueDate
-            item.priority = priority
-            item.scheduleNotification()
             
-            delegate?.itemDetailViewController(controller: self, didFinishAddingItem: item)
+        }else{
+            var item: ChecklistItem?
+            try! uiRealm .write {
+            item = ChecklistItem()
+            item!.text = textField.text!
+            item!.checked = false
+            item!.shouldRemind = shouldRemindSwitch.isOn
+            item!.dueDate = dueDate
+            item!.priority = priority
+            item!.scheduleNotification()
+            }
+            
+            if let item = item {delegate?.itemDetailViewController(controller: self, didFinishAddingItem: item)}
         }
     }
     
@@ -112,7 +119,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func updatePrioritySegmentControl(){
-        switch priority {
+        switch Priority(rawValue: priority)! {
         case .none:
             prioritySegmentControl.selectedSegmentIndex = 0
         case .normal:

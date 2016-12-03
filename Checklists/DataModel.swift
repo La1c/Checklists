@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
 class DataModel{
-    var lists = [Checklist]()
+    var lists:Results<Checklist>!
     
     
     var indexOfSelectedChecklist:Int{
@@ -21,7 +22,7 @@ class DataModel{
         }
     }
     
-    init() {
+    required init() {
         loadChecklists()
         registerDefaults()
         handleFirstTime()
@@ -35,32 +36,32 @@ class DataModel{
         
     }
     
-    func documentsDirectory() -> URL{
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
-    func dataFilePath() -> URL{
-        return documentsDirectory().appendingPathComponent("Checklists.plist")
-    }
-    
     
     func saveChecklists(){
-        let data = NSMutableData()
-        let archiver = NSKeyedArchiver(forWritingWith: data)
-        archiver.encode(lists, forKey: "Checklists")
-        archiver.finishEncoding()
-        data.write(to: dataFilePath(), atomically: true)
+        
+        try! uiRealm.write{
+            uiRealm.add(lists, update: false)
+        }
+    }
+    
+    func addChecklist(checklist: Checklist){
+        try! uiRealm.write {
+            uiRealm.add(checklist, update: false)
+        }
+        
+        loadChecklists()
     }
     
     func loadChecklists(){
-        let path = dataFilePath()
-        if let data = try? Data(contentsOf: path){
-            let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
-            lists = unarchiver.decodeObject(forKey: "Checklists") as! [Checklist]
-            unarchiver.finishDecoding()
-        }
-        sortChecklists()
+        
+        lists = uiRealm.objects(Checklist.self).sorted(byProperty: "name")
+    }
+    
+    func remove(list at: IndexPath){
+        try! uiRealm.write({ () -> Void in
+            uiRealm.delete(lists[at.row])
+        })
+         loadChecklists()
     }
     
     func handleFirstTime(){
@@ -68,9 +69,12 @@ class DataModel{
         let firstTime = userDefaults.bool(forKey: "FirstTime")
         
         if firstTime{
-            let checklist = Checklist(name: "List")
+            let checklist = Checklist()
+            checklist.name = "List"
             checklist.iconName = "Folder"
-            lists.append(checklist)
+            try! uiRealm.write {
+                uiRealm.add(checklist)
+                }
             
             indexOfSelectedChecklist = 0
             userDefaults.set(false, forKey: "FirstTime")
@@ -79,10 +83,13 @@ class DataModel{
     }
     
     func sortChecklists(){
-        lists.sort(by: {a, b in a.name.localizedStandardCompare(b.name) == .orderedAscending})
+       lists = lists.sorted(byProperty: "name")
     }
     
     static func nextChecklistItemID() -> Int{
+        
+        
+        
         let userDefaults = UserDefaults.standard
         let itemID = userDefaults.integer(forKey: "ChecklistItemID")
         userDefaults.set(itemID + 1, forKey: "ChecklistItemID")

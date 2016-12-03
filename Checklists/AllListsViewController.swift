@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate, UINavigationControllerDelegate {
 
@@ -72,7 +73,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
-        dataModel.lists.remove(at: indexPath.row)
+        dataModel.remove(list: indexPath)// lists.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
@@ -91,7 +92,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowChecklist"{
             let controller = segue.destination as! ChecklistViewController
-            controller.checklist = sender as! Checklist
+            controller.selectedChecklist = sender as! Checklist
         } else if segue.identifier == "AddChecklist"{
             let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.topViewController as! ListDetailViewController
@@ -106,14 +107,15 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     }
     
     func listDetailViewController(controller: ListDetailViewController, didFinishAdding checklist: Checklist){
-        dataModel.lists.append(checklist)
-        dataModel.sortChecklists()
+        
+        dataModel.addChecklist(checklist: checklist)
+        
         tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
     
     func listDetailViewController(controller: ListDetailViewController, didFinishEditing checklist: Checklist){
-        dataModel.sortChecklists()
+        dataModel.addChecklist(checklist: checklist)
         tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }

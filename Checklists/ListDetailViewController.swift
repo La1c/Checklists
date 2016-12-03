@@ -34,7 +34,10 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
             title = "Edit Checklist"
             textField.text = checklist.name
             doneBarButton.isEnabled = true
-            checklist.iconName = iconName
+            try! uiRealm.write {
+                checklist.iconName = iconName
+            }
+            
         }
         
          iconImageView.image = UIImage(named: iconName)
@@ -50,13 +53,20 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func done() {
         if let checklist = checkListToEdit{
-            checklist.name = textField.text!
-            checklist.iconName = iconName
+            try! uiRealm.write {
+                checklist.name = textField.text!
+                checklist.iconName = iconName
+            }
             delegate?.listDetailViewController(controller: self, didFinishEditing: checklist)
         }else{
-            let checklist = Checklist(name: textField.text!, iconName: iconName)
-            delegate?.listDetailViewController(controller: self, didFinishAdding: checklist)
             
+            var checklist:Checklist?
+            try! uiRealm.write {
+                checklist = Checklist()
+                checklist!.name = textField.text!
+                checklist!.iconName = iconName
+            }
+            if let checklist = checklist {delegate?.listDetailViewController(controller: self, didFinishAdding: checklist)}
         }
     }
     
