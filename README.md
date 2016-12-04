@@ -10,7 +10,7 @@ To-do:
 
 Screenshots:
 
-<img src="https://github.com/La1c/Checklists/blob/master/Screenshot1.png?raw=true" width="320">
-<img src="https://github.com/La1c/Checklists/blob/master/Screenshot2.png?raw=true" width="320">
-<img src="https://github.com/La1c/Checklists/blob/master/Screenshot3.png?raw=true" width="320">
-<img src="https://github.com/La1c/Checklists/blob/master/Screenshot4.png?raw=true" width="320">
+<img src="https://raw.githubusercontent.com/La1c/Checklists/master/Screenshot1.png?raw=true" width="320">
+<img src="https://raw.githubusercontent.com/La1c/Checklists/master/Screenshot2.png?raw=true" width="320">
+<img src="https://raw.githubusercontent.com/La1c/Checklists/master/Screenshot3.png?raw=true" width="320">
+<img src="https://raw.githubusercontent.com/La1c/Checklists/master/Screenshot4.png?raw=true" width="320">
