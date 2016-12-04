@@ -2,6 +2,12 @@ Checklists app via Ray Wenderlich tutorials.
 
 Also this is an app for trying out realm at VKU iOS course.
 
+Done:
+
+* Adding and editing lists and items
+* Everything is saved via Realm
+* UI tests and Unit tests
+
 To-do:
 
 * Fix bugs
