@@ -1,11 +1,9 @@
-Checklists app via Ray Wenderlich tutorials
+Checklists app via Ray Wenderlich tutorials.
 
-Also this is an app for trying out realm at VKU iOS course
+Also this is an app for trying out realm at VKU iOS course.
 
 To-do:
 
-* Realm
-* Priorities
 * Fix bugs
 
 Screenshots:
