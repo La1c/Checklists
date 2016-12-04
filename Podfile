@@ -1,5 +1,5 @@
-target 'Checklists' do
 use_frameworks!
+target 'Checklists' do
 
 pod 'RealmSwift'
 
@@ -12,3 +12,11 @@ post_install do |installer|
 end
 
 end
+
+
+target 'ChecklistsTests' do
+
+pod 'RealmSwift'
+
+end
+

@@ -14,8 +14,6 @@ class Checklist: Object {
     dynamic var name = ""
     var items = List<ChecklistItem>()
     
-    
-    
     func countUncheckedItems() -> Int{
         var count = 0
         for item in items where !item.checked{

@@ -12,7 +12,6 @@ import RealmSwift
 class DataModel{
     var lists:Results<Checklist>!
     
-    
     var indexOfSelectedChecklist:Int{
         get{
             return UserDefaults.standard.integer(forKey: "ChecklistIndex")
@@ -33,12 +32,10 @@ class DataModel{
                                          "FirstTime": true,
                                          "ChecklistItemID": 0]
         UserDefaults.standard.register(defaults: dictionary)
-        
     }
     
     
     func saveChecklists(){
-        
         try! uiRealm.write{
             uiRealm.add(lists, update: false)
         }
@@ -48,12 +45,10 @@ class DataModel{
         try! uiRealm.write {
             uiRealm.add(checklist, update: false)
         }
-        
         loadChecklists()
     }
     
     func loadChecklists(){
-        
         lists = uiRealm.objects(Checklist.self).sorted(byProperty: "name")
     }
     
@@ -87,9 +82,6 @@ class DataModel{
     }
     
     static func nextChecklistItemID() -> Int{
-        
-        
-        
         let userDefaults = UserDefaults.standard
         let itemID = userDefaults.integer(forKey: "ChecklistItemID")
         userDefaults.set(itemID + 1, forKey: "ChecklistItemID")

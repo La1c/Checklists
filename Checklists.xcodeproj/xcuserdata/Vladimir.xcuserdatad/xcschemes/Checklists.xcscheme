@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E7A4C8451DF379D400980CFD"
+               BuildableName = "ChecklistsUITests.xctest"
+               BlueprintName = "ChecklistsUITests"
+               ReferencedContainer = "container:Checklists.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E7A4C8531DF37A0F00980CFD"
+               BuildableName = "ChecklistsTests.xctest"
+               BlueprintName = "ChecklistsTests"
+               ReferencedContainer = "container:Checklists.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

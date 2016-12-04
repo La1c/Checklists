@@ -36,8 +36,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
             doneBarButton.isEnabled = true
             try! uiRealm.write {
                 checklist.iconName = iconName
-            }
-            
+            }            
         }
         
          iconImageView.image = UIImage(named: iconName)
