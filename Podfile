@@ -20,3 +20,9 @@ pod 'RealmSwift'
 
 end
 
+target 'ChecklistsUITests' do
+
+pod 'RealmSwift'
+
+end
+

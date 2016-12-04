@@ -97,9 +97,9 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             doneBarButton.isEnabled = true
             shouldRemindSwitch.isOn = item.shouldRemind
             dueDate = item.dueDate
-            textField.delegate = self
             priority = item.priority
         }
+        textField.delegate = self
         
         updateDueDateLabel()
         updatePrioritySegmentControl()
@@ -109,6 +109,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
     }
+
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text! as NSString
@@ -215,6 +216,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
             hideDatePicker()
     }
+    
     
     override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
         var newIndexPath = indexPath

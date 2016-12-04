@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		28BA6E883AF6F3F4F9DA488E /* Pods_ChecklistsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D8619A7B2FB7E077CD91AE /* Pods_ChecklistsTests.framework */; };
 		77976200C4D9C18020DEB6CF /* Pods_Checklists.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B46B7A205D716E88492E594D /* Pods_Checklists.framework */; };
+		E06F6603E625C9F3E3B2C89C /* Pods_ChecklistsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889701D0360F2AF3A9BA71C0 /* Pods_ChecklistsUITests.framework */; };
 		E70082131DEC4E5100EE679A /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70082121DEC4E5100EE679A /* Priority.swift */; };
 		E71999E01DB11A24004CCCB4 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71999DF1DB11A24004CCCB4 /* ListDetailViewController.swift */; };
 		E72ECBA41D5CE1C100C3FB07 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72ECBA31D5CE1C100C3FB07 /* ItemDetailsViewController.swift */; };
@@ -44,9 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08D4DEFFFF6474EACC717000 /* Pods-ChecklistsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChecklistsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChecklistsUITests/Pods-ChecklistsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		35235E4A167A4C45DD7A2409 /* Pods-Checklists.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Checklists.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Checklists/Pods-Checklists.debug.xcconfig"; sourceTree = "<group>"; };
+		4DA4CCD0E26A0F5E3CCF7A67 /* Pods-ChecklistsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChecklistsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChecklistsUITests/Pods-ChecklistsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		65B6F6B266327E140396FB0F /* Pods-ChecklistsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChecklistsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChecklistsTests/Pods-ChecklistsTests.release.xcconfig"; sourceTree = "<group>"; };
 		76CB292611B6282356FC55B7 /* Pods-Checklists.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Checklists.release.xcconfig"; path = "Pods/Target Support Files/Pods-Checklists/Pods-Checklists.release.xcconfig"; sourceTree = "<group>"; };
+		889701D0360F2AF3A9BA71C0 /* Pods_ChecklistsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChecklistsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E5874A68E09CE3F0CE430C /* Pods-ChecklistsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChecklistsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChecklistsTests/Pods-ChecklistsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B46B7A205D716E88492E594D /* Pods_Checklists.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Checklists.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7D8619A7B2FB7E077CD91AE /* Pods_ChecklistsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChecklistsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E06F6603E625C9F3E3B2C89C /* Pods_ChecklistsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +113,8 @@
 				76CB292611B6282356FC55B7 /* Pods-Checklists.release.xcconfig */,
 				B3E5874A68E09CE3F0CE430C /* Pods-ChecklistsTests.debug.xcconfig */,
 				65B6F6B266327E140396FB0F /* Pods-ChecklistsTests.release.xcconfig */,
+				4DA4CCD0E26A0F5E3CCF7A67 /* Pods-ChecklistsUITests.debug.xcconfig */,
+				08D4DEFFFF6474EACC717000 /* Pods-ChecklistsUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -117,6 +124,7 @@
 			children = (
 				B46B7A205D716E88492E594D /* Pods_Checklists.framework */,
 				C7D8619A7B2FB7E077CD91AE /* Pods_ChecklistsTests.framework */,
+				889701D0360F2AF3A9BA71C0 /* Pods_ChecklistsUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -217,9 +225,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7A4C84D1DF379D400980CFD /* Build configuration list for PBXNativeTarget "ChecklistsUITests" */;
 			buildPhases = (
+				7C2715FA250BC234A7E70760 /* [CP] Check Pods Manifest.lock */,
 				E7A4C8421DF379D400980CFD /* Sources */,
 				E7A4C8431DF379D400980CFD /* Frameworks */,
 				E7A4C8441DF379D400980CFD /* Resources */,
+				6E1A316672A834B4E12ED9BA /* [CP] Embed Pods Frameworks */,
+				D1B771DB434C7F987461A4F9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -389,6 +400,36 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		6E1A316672A834B4E12ED9BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChecklistsUITests/Pods-ChecklistsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C2715FA250BC234A7E70760 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		9DEF4548E9532601832AC3FE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -417,6 +458,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChecklistsTests/Pods-ChecklistsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1B771DB434C7F987461A4F9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChecklistsUITests/Pods-ChecklistsUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -615,6 +671,7 @@
 		};
 		E7A4C84E1DF379D400980CFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DA4CCD0E26A0F5E3CCF7A67 /* Pods-ChecklistsUITests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -633,6 +690,7 @@
 		};
 		E7A4C84F1DF379D400980CFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08D4DEFFFF6474EACC717000 /* Pods-ChecklistsUITests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
